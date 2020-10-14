@@ -23,19 +23,7 @@ class Solution {
         }
         return arr
     }
-    
-//    func maxProfit(_ prices: [Int]) -> Int {
-//        var maxProfit = 0;
-//        for i in 0..<prices.count - 1 {
-//            for j in i + 1..<prices.count {
-//                let profit = prices[j] - prices[i]
-//                if profit > maxProfit {
-//                    maxProfit = profit
-//                }
-//            }
-//        }
-//        return maxProfit;
-//    }
+
     
     func maxProfit(_ prices: [Int]) -> Int {
         if prices.isEmpty {
@@ -77,6 +65,5 @@ class Solution {
 }
 
 var solution = Solution()
-var arr = [1,2,3,1]
-solution.containsDuplicate(arr)
+
 
