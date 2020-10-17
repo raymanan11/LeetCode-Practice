@@ -114,11 +114,37 @@ class Solution {
         return resultsArr
         
     }
+    
+//    Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+//    Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+
+//    Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+//    Output: 6
+//    Explanation: [4,-1,2,1] has the largest sum = 6.
+    
+//    Input: nums = [-2147483647]
+//    Output: -2147483647
+    
+    func maxSubArray(_ nums: [Int]) -> Int {
+        // set the max end to be the first element in array by default
+        var max_end = nums[0]
+        // set the max so far as the first element in array by default
+        var max_so_far = nums[0]
+        for index in 1..<nums.count {
+            print("hi")
+            // compares the current index against current index + max_end because it'll keep track of the largest one of the two
+            max_end = max(nums[index], nums[index] + max_end)
+            // this will keep track of the addition by checking the max between the current max or the max_end that was just connected
+            max_so_far = max(max_so_far, max_end)
+        }
+        return max_so_far
+    }
 
 }
 
 var solution = Solution()
-var arr = [4,5,1,8,2]
-solution.productExceptSelf(arr)
+var arr = [-3]
+solution.maxSubArray(arr)
 
 
