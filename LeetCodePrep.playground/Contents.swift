@@ -140,11 +140,60 @@ class Solution {
         }
         return max_so_far
     }
+    
+//    Given an integer array nums, find the contiguous subarray within an array (containing at least one number) which has the largest product.
+    
+//    Input: [2, 3, -2, 4]
+//    Output: 6
+//    Explanation: [2,3] has the largest product 6.
+//
+//    Input: [-2, 0, -1]
+//    Output: 0
+//    Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
+    // if nums[i] * max_end < 0 and nums[i + 1] < 0
+    // max_end = nums[i] * max_end
+//    Input: [-2, 3, -4]
+//    Output: 24
+    
+//    Input: [3, -1, 4]
+//    Output: 4
+    
+//    Input: [0, 2]
+//    Output: 2
+    
+    func maxProduct(_ nums: [Int]) -> Int {
+        var maximum = Int.min
+        var product = 1
+        let numsLength = nums.count
+        
+        for i in 0..<numsLength {
+            product = product * nums[i]
+            maximum = max(product, maximum)
+            // if product becomes 0 for example array [10, 0,-1,6,-2] it will set product back to 1 after 0 iteration
+            // so that product won't keep becoming 0 because product = product(0) * nums[i]
+            if nums[i] == 0 {
+                product = 1
+            }
+        }
+        
+        // reset the product to look from right side if there are an odd number of negative numbers
+        // i.e. [-2, 5,3] first iteration (left to right) max will be -2 but next iteration max will be 15 because 3 * 5
+        product = 1
+        for num in nums.reversed() {
+            product = product * num
+            maximum = max(product, maximum)
+            if num == 0 {
+                product = 1
+            }
+        }
+        
+        return maximum
+    }
 
 }
 
 var solution = Solution()
-var arr = [-3]
-solution.maxSubArray(arr)
+var arr = [-2, 5, 3, 4]
+solution.maxProduct(arr)
 
 
