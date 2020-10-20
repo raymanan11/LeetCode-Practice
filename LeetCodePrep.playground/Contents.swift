@@ -149,9 +149,7 @@ class Solution {
 //
 //    Input: [-2, 0, -1]
 //    Output: 0
-//    Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
-    // if nums[i] * max_end < 0 and nums[i + 1] < 0
-    // max_end = nums[i] * max_end
+
 //    Input: [-2, 3, -4]
 //    Output: 24
     
@@ -188,6 +186,22 @@ class Solution {
         }
         
         return maximum
+    }
+    
+//    Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+//
+//    (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+//
+//    Find the minimum element.
+//
+//    Input: [3,4,5,1,2]
+//    Output: 1
+//
+//    Input: [4,5,6,7,0,1,2]
+//    Output: 0
+    
+    func findMin(_ nums: [Int]) -> Int {
+            
     }
 
 }
