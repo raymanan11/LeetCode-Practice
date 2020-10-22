@@ -200,14 +200,40 @@ class Solution {
 //    Input: [4,5,6,7,0,1,2]
 //    Output: 0
     
-    func findMin(_ nums: [Int]) -> Int {
-            
-    }
+//    func findMin(_ nums: [Int]) -> Int {
+//
+//    }
+    
+//    Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.
+//    Input: nums = [1,1,2]
+//    Output: 2, nums = [1,2]
+//    Explanation: Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn't matter what you leave beyond the returned length.
+    
+//    Input: nums = [0,0,1,1,1,2,2,3,3,4]
+//    Output: 5, nums = [0,1,2,3,4]
+//    Explanation: Your function should returneeee length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively. It doesn't matter what values are set beyond the returned length.
+    
+    func removeDuplicates(_ nums: inout [Int]) -> Int {
+        
+        var i = 0
+        
+        for j in 1..<nums.count {
+            // for second example, the first time it's not equal is when i = 0 and j = 2, nums[i] = 0 nums[j] = 1
+            // you would then add 1 to i which makes i = 1 and put nums[j] into nums[i]
+            if nums[i] != nums[j] {
+                i+=1
+                nums[i] = nums[j]
+            }
+        }
+        
+        return i + 1
 
+    }
+    
 }
 
 var solution = Solution()
-var arr = [-2, 5, 3, 4]
-solution.maxProduct(arr)
+var arr = [0,0,1,1,1,2,2,3,3,4]
+solution.removeDuplicates(&arr)
 
 
