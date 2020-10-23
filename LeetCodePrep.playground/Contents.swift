@@ -267,14 +267,48 @@ class Solution {
                 nums[futureIndex % numsLength] = num
             }
         }
+    }
+    
+//    Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+//
+//    Input: nums = [2,2,1]
+//    Output: 1
+//
+//    Input: nums = [4,1,2,1,2]
+//    Output: 4
+    
+    func singleNumber(_ nums: [Int]) -> Int {
         
+        var dict = [Int:Int]()
+        var foundMatching = [Int:Bool]()
+        var loneNumber = 0
+        
+        for (index, num) in nums.enumerated() {
+            dict[num] = index
+        }
+        
+        for (index, num) in nums.enumerated() {
+            if let matchingIndex = dict[num] {
+                if index == matchingIndex {
+                    if foundMatching[num] == nil {
+                        loneNumber = num
+                        break
+                    }
+                }
+                else {
+                    foundMatching[num] = true
+                }
+            }
+        }
+        
+        return loneNumber
     }
     
 }
 
 var solution = Solution()
-var arr = [1,2,3,4,5,6,7]
-solution.rotate(&arr, 13)
-print(arr)
+var arr = [2,2,1]
+var int = solution.singleNumber(arr)
+print(int)
 
 
