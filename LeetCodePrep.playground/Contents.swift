@@ -7,29 +7,34 @@ class Solution {
 //    Input: nums = [2,7,11,15], target = 9
 //    Output: [0,1]
     
+//    Input: nums = [3,3], target = 6
+//    Output = [0,1]
+    
     func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
-        var dict = [Int: Int]()
-        var arr: [Int] = []
+        var dict = [Int:Int]()
+        var resultArr = [Int]()
         
-        // add all of the numbers in a dictionary
+        // add all the numbers to a dictionary with numbers being key and index being value
         for (index, num) in nums.enumerated() {
             dict[num] = index
         }
         
-        // go through whole array and because trget - num gets the second number that when added with num gets the target,
-        // check if that number is in the dictionary and if it is and is not the same array index return that array of indexes
+        // for each number the other matching number would be target - number
+        // so we check if that is is the dictionary and if it is then add those indexes into array
+        // but if it's the same index just continue through array
         for (index, num) in nums.enumerated() {
-            let indexTwo = target - num
-            if let indexTwoFound = dict[indexTwo] {
-                if index == indexTwoFound {
+            let otherNumber = target - num
+            if let otherIndex = dict[otherNumber] {
+                if index == otherIndex {
                     continue
                 }
-                arr.append(index)
-                arr.append(indexTwoFound)
+                resultArr.append(index)
+                resultArr.append(otherIndex)
                 break
             }
         }
-        return arr
+        
+        return resultArr
     }
 
 //    Say you have an array for which the ith element is the price of a given stock on day i.
@@ -41,22 +46,24 @@ class Solution {
 //                 Not 7-1 = 6, as selling price needs to be larger than buying price.
     
     func maxProfit(_ prices: [Int]) -> Int {
-        if prices.isEmpty {
-            return 0
-        }
+        
+        if prices.isEmpty { return 0 }
         
         var maxProfit = 0;
-        var smallestStockPrice = prices[0]
+        
+        var smallestPrice = prices[0]
         
         for price in prices {
-            if price < smallestStockPrice {
-                smallestStockPrice = price
+            if price < smallestPrice {
+                smallestPrice = price
             }
-            else if price - smallestStockPrice > maxProfit {
-                maxProfit = price - smallestStockPrice
+            else if price - smallestPrice > maxProfit {
+                maxProfit = price - smallestPrice
             }
         }
+        
         return maxProfit
+
     }
     
 //    Given an array of integers, find if the array contains any duplicates.
@@ -66,18 +73,14 @@ class Solution {
 //    Output: true
     
     func containsDuplicate(_ nums: [Int]) -> Bool {
+        var dict = [Int:Int]()
         
-        if nums.isEmpty { return false }
-        
-        var dict = [Int:Bool]()
-        for num in nums {
-            // if you check the dictionary and the num exists it the dictionary, that means it has already been added meaning duplicate
-            if dict[num] != nil {
-                return true
+        for (index, num) in nums.enumerated() {
+            if dict[num] == nil {
+                dict[num] = index
             }
-            // if it's not in the dictionary then you add it
             else {
-                dict[num] = false
+                return true
             }
         }
         return false
@@ -205,6 +208,7 @@ class Solution {
 //    }
     
 //    Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.
+    
 //    Input: nums = [1,1,2]
 //    Output: 2, nums = [1,2]
 //    Explanation: Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn't matter what you leave beyond the returned length.
@@ -215,9 +219,7 @@ class Solution {
     
     func removeDuplicates(_ nums: inout [Int]) -> Int {
         
-        if nums.isEmpty {
-            return 0
-        }
+        if nums.isEmpty { return 0 }
         
         var i = 0
         
@@ -234,10 +236,53 @@ class Solution {
 
     }
     
+//    Given an array, rotate the array to the right by k steps, where k is non-negative.
+//
+//    Input: nums = [1,2,3,4,5,6,7], k = 3
+//    Output: [5,6,7,1,2,3,4]
+//    Explanation:
+//    rotate 1 steps to the right: [7,1,2,3,4,5,6]
+//    rotate 2 steps to the right: [6,7,1,2,3,4,5]
+//    rotate 3 steps to the right: [5,6,7,1,2,3,4]
+    
+    func rotate(_ nums: inout [Int], _ k: Int) {
+        
+        var dict = [Int:Int]()
+        // add all of the indexes and numbers into the dictionary to keep track of original array position
+        for (index, num) in nums.enumerated() {
+            dict[index] = num
+        }
+        var numRot = k
+        // dealing with rotations that are greater than the number of elements in the array
+        // i.e. if the number of elements is 5 and asks for 7 rotations, its the same as 2 rotations
+        // so no need to do extra rotations so just mod the numRot by count of elements to get actual rotations
+        if k > nums.count {
+            numRot = k % nums.count
+        }
+        let numsLength = nums.count - 1
+        for (index, _) in nums.enumerated() {
+            // for the index, get number from original index
+            if let num = dict[index] {
+                // for current index, get the future based on numRot
+                let futureIndex = index + numRot
+                // deals with the rotations that go from end of array to beginning of array
+                if futureIndex > numsLength {
+                    nums[futureIndex - numsLength - 1] = num
+                }
+                // deals with rotations still within array
+                else {
+                    nums[futureIndex] = num
+                }
+            }
+        }
+        
+    }
+    
 }
 
 var solution = Solution()
-var arr = [0,0,1,1,1,2,2,3,3,4]
-solution.removeDuplicates(&arr)
+var arr = [1,2,3,4,5,6,7]
+solution.rotate(&arr, 13)
+print(arr)
 
 
