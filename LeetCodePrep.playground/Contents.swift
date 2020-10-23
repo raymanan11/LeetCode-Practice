@@ -280,28 +280,17 @@ class Solution {
     func singleNumber(_ nums: [Int]) -> Int {
         
         var dict = [Int:Int]()
-        var foundMatching = [Int:Bool]()
-        var loneNumber = 0
         
         for (index, num) in nums.enumerated() {
-            dict[num] = index
-        }
-        
-        for (index, num) in nums.enumerated() {
-            if let matchingIndex = dict[num] {
-                if index == matchingIndex {
-                    if foundMatching[num] == nil {
-                        loneNumber = num
-                        break
-                    }
-                }
-                else {
-                    foundMatching[num] = true
-                }
+            if dict[num] == nil {
+                dict[num] = index
+            }
+            else {
+                dict.removeValue(forKey: num)
             }
         }
         
-        return loneNumber
+        return dict.first!.key
     }
     
 }
