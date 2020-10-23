@@ -253,26 +253,18 @@ class Solution {
             dict[index] = num
         }
         var numRot = k
+        let numsLength = nums.count
         // dealing with rotations that are greater than the number of elements in the array
         // i.e. if the number of elements is 5 and asks for 7 rotations, its the same as 2 rotations
         // so no need to do extra rotations so just mod the numRot by count of elements to get actual rotations
         if k > nums.count {
-            numRot = k % nums.count
+            numRot = k % numsLength
         }
-        let numsLength = nums.count - 1
         for (index, _) in nums.enumerated() {
             // for the index, get number from original index
             if let num = dict[index] {
-                // for current index, get the future based on numRot
                 let futureIndex = index + numRot
-                // deals with the rotations that go from end of array to beginning of array
-                if futureIndex > numsLength {
-                    nums[futureIndex - numsLength - 1] = num
-                }
-                // deals with rotations still within array
-                else {
-                    nums[futureIndex] = num
-                }
+                nums[futureIndex % numsLength] = num
             }
         }
         
