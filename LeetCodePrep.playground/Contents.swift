@@ -208,7 +208,6 @@ class Solution {
 //    }
     
 //    Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.
-    
 //    Input: nums = [1,1,2]
 //    Output: 2, nums = [1,2]
 //    Explanation: Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn't matter what you leave beyond the returned length.
@@ -293,11 +292,84 @@ class Solution {
         return dict.first!.key
     }
     
+//    Given two arrays, write a function to compute their intersection.
+//
+//    Input: nums1 = [1,2,2,1], nums2 = [2,2]    Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+//    Output: [2,2]                              Output: [4,9]
+    
+//    func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
+//        var dict1 = [Int:Int]()
+//        var dict2 = [Int:Int]()
+//        var resultArr = [Int]()
+//        for (index, num) in nums1.enumerated() {
+//            dict1[num] = index
+//        }
+//
+//        for (index, num) in nums2.enumerated() {
+//            dict2[num] = index
+//        }
+//
+//        if nums1.count > nums2.count {
+//            for num in nums2 {
+//                if dict1[num] != nil {
+//
+//                }
+//            }
+//        }
+//        else {
+//
+//        }
+//    }
+    
+//    Given a non-empty array of digits representing a non-negative integer, increment one to the integer.
+//    The digits are stored such that the most significant digit is at the head of the list, and each element in the array contains a single digit.
+//    You may assume the integer does not contain any leading zero, except the number 0 itself.
+
+    // [9,9,9]     [9]     [1,4,3,9]
+    // [1,0,0,0]   [10]    [1,4,4,0]
+    func plusOne(_ digits: [Int]) -> [Int] {
+        var digitz = digits
+        digitz[digits.count - 1] = digitz[digits.count - 1] + 1
+    
+        for index in stride(from: digitz.count - 1, through: 1, by: -1) {
+            if digitz[index] == 10 {
+                digitz[index] = 0
+                digitz[index - 1] = digitz[index - 1] + 1
+            }
+        }
+        
+        if digitz[0] == 10 {
+            digitz[0] = 0
+            digitz.insert(1, at: 0)
+        }
+        
+        
+        return digitz
+    }
+
+//    Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+//    (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+//    Find the minimum element.
+
+//    Input: [3,4,5,1,2]
+//    Output: 1
+    
+    func findMin(_ nums: [Int]) -> Int {
+        var lowestValue = nums[0]
+        
+        for num in nums {
+            if num < lowestValue {
+                lowestValue = num
+            }
+        }
+        return lowestValue
+    }
+    
 }
 
 var solution = Solution()
-var arr = [2,2,1]
-var int = solution.singleNumber(arr)
-print(int)
+var arr = [3,4,5,1,2]
+var lowestValue = solution.findMin(arr)
+print(lowestValue)
 
 
