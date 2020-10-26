@@ -1,14 +1,14 @@
 class Solution {
     
-//    Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-//    You may assume that each input would have exactly one solution, and you may not use the same element twice.
-//    You can return the answer in any order.
+    //    Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+    //    You may assume that each input would have exactly one solution, and you may not use the same element twice.
+    //    You can return the answer in any order.
     
-//    Input: nums = [2,7,11,15], target = 9
-//    Output: [0,1]
+    //    Input: nums = [2,7,11,15], target = 9
+    //    Output: [0,1]
     
-//    Input: nums = [3,3], target = 6
-//    Output = [0,1]
+    //    Input: nums = [3,3], target = 6
+    //    Output = [0,1]
     
     func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
         var dict = [Int:Int]()
@@ -37,13 +37,13 @@ class Solution {
         return resultArr
     }
 
-//    Say you have an array for which the ith element is the price of a given stock on day i.
-//    If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+    //    Say you have an array for which the ith element is the price of a given stock on day i.
+    //    If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
     
-//    Input: [7,1,5,3,6,4]
-//    Output: 5
-//    Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
-//                 Not 7-1 = 6, as selling price needs to be larger than buying price.
+    //    Input: [7,1,5,3,6,4]
+    //    Output: 5
+    //    Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+    //                 Not 7-1 = 6, as selling price needs to be larger than buying price.
     
     func maxProfit(_ prices: [Int]) -> Int {
         
@@ -66,11 +66,11 @@ class Solution {
 
     }
     
-//    Given an array of integers, find if the array contains any duplicates.
-//    Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
+    //    Given an array of integers, find if the array contains any duplicates.
+    //    Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
     
-//    Input: [1,2,3,1]
-//    Output: true
+    //    Input: [1,2,3,1]
+    //    Output: true
     
     func containsDuplicate(_ nums: [Int]) -> Bool {
         var dict = [Int:Int]()
@@ -86,10 +86,10 @@ class Solution {
         return false
     }
     
-//    Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+    //    Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
     
-//    Input:  [4,5,1,8,2]
-//    Output: [80,64,320,40,160]
+    //    Input:  [4,5,1,8,2]
+    //    Output: [80,64,320,40,160]
     
     func productExceptSelf(_ nums: [Int]) -> [Int] {
             
@@ -118,16 +118,16 @@ class Solution {
         
     }
     
-//    Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+    //    Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
-//    Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
-
-//    Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
-//    Output: 6
-//    Explanation: [4,-1,2,1] has the largest sum = 6.
+    //    Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
     
-//    Input: nums = [-2147483647]
-//    Output: -2147483647
+    //    Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+    //    Output: 6
+    //    Explanation: [4,-1,2,1] has the largest sum = 6.
+    
+    //    Input: nums = [-2147483647]
+    //    Output: -2147483647
     
     func maxSubArray(_ nums: [Int]) -> Int {
         // set the max end to be the first element in array by default
@@ -144,23 +144,23 @@ class Solution {
         return max_so_far
     }
     
-//    Given an integer array nums, find the contiguous subarray within an array (containing at least one number) which has the largest product.
+    //    Given an integer array nums, find the contiguous subarray within an array (containing at least one number) which has the largest product.
     
-//    Input: [2, 3, -2, 4]
-//    Output: 6
-//    Explanation: [2,3] has the largest product 6.
-//
-//    Input: [-2, 0, -1]
-//    Output: 0
+    //    Input: [2, 3, -2, 4]
+    //    Output: 6
+    //    Explanation: [2,3] has the largest product 6.
+ 
+    //    Input: [-2, 0, -1]
+    //    Output: 0
 
-//    Input: [-2, 3, -4]
-//    Output: 24
+    //    Input: [-2, 3, -4]
+    //    Output: 24
     
-//    Input: [3, -1, 4]
-//    Output: 4
+    //    Input: [3, -1, 4]
+    //    Output: 4
     
-//    Input: [0, 2]
-//    Output: 2
+    //    Input: [0, 2]
+    //    Output: 2
     
     func maxProduct(_ nums: [Int]) -> Int {
         var maximum = Int.min
@@ -191,30 +191,30 @@ class Solution {
         return maximum
     }
     
-//    Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
-//
-//    (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
-//
-//    Find the minimum element.
-//
-//    Input: [3,4,5,1,2]
-//    Output: 1
-//
-//    Input: [4,5,6,7,0,1,2]
-//    Output: 0
+    //    Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+    //
+    //    (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+   
+    //    Find the minimum element.
+
+    //    Input: [3,4,5,1,2]
+    //    Output: 1
+
+    //    Input: [4,5,6,7,0,1,2]
+    //    Output: 0
     
 //    func findMin(_ nums: [Int]) -> Int {
 //
 //    }
     
-//    Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.
-//    Input: nums = [1,1,2]
-//    Output: 2, nums = [1,2]
-//    Explanation: Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn't matter what you leave beyond the returned length.
+    //    Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.
+    //    Input: nums = [1,1,2]
+    //    Output: 2, nums = [1,2]
+    //    Explanation: Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn't matter what you leave beyond the returned length.
     
-//    Input: nums = [0,0,1,1,1,2,2,3,3,4]
-//    Output: 5, nums = [0,1,2,3,4]
-//    Explanation: Your function should returneeee length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively. It doesn't matter what values are set beyond the returned length.
+    //    Input: nums = [0,0,1,1,1,2,2,3,3,4]
+    //    Output: 5, nums = [0,1,2,3,4]
+    //    Explanation: Your function should returneeee length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively. It doesn't matter what values are set beyond the returned length.
     
     func removeDuplicates(_ nums: inout [Int]) -> Int {
         
@@ -235,14 +235,14 @@ class Solution {
 
     }
     
-//    Given an array, rotate the array to the right by k steps, where k is non-negative.
-//
-//    Input: nums = [1,2,3,4,5,6,7], k = 3
-//    Output: [5,6,7,1,2,3,4]
-//    Explanation:
-//    rotate 1 steps to the right: [7,1,2,3,4,5,6]
-//    rotate 2 steps to the right: [6,7,1,2,3,4,5]
-//    rotate 3 steps to the right: [5,6,7,1,2,3,4]
+    //    Given an array, rotate the array to the right by k steps, where k is non-negative.
+
+    //    Input: nums = [1,2,3,4,5,6,7], k = 3
+    //    Output: [5,6,7,1,2,3,4]
+    //    Explanation:
+    //    rotate 1 steps to the right: [7,1,2,3,4,5,6]
+    //    rotate 2 steps to the right: [6,7,1,2,3,4,5]
+    //    rotate 3 steps to the right: [5,6,7,1,2,3,4]
     
     func rotate(_ nums: inout [Int], _ k: Int) {
         
@@ -268,13 +268,13 @@ class Solution {
         }
     }
     
-//    Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
-//
-//    Input: nums = [2,2,1]
-//    Output: 1
-//
-//    Input: nums = [4,1,2,1,2]
-//    Output: 4
+    //    Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+    //
+    //    Input: nums = [2,2,1]
+    //    Output: 1
+
+    //    Input: nums = [4,1,2,1,2]
+    //    Output: 4
     
     func singleNumber(_ nums: [Int]) -> Int {
         
@@ -292,10 +292,10 @@ class Solution {
         return dict.first!.key
     }
     
-//    Given two arrays, write a function to compute their intersection.
-//
-//    Input: nums1 = [1,2,2,1], nums2 = [2,2]    Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
-//    Output: [2,2]                              Output: [4,9]
+    //    Given two arrays, write a function to compute their intersection.
+    //
+    //    Input: nums1 = [1,2,2,1], nums2 = [2,2]    Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+    //    Output: [2,2]                              Output: [4,9]
     
 //    func intersect(_ nums1: [Int], _ nums2: [Int]) -> [Int] {
 //        var dict1 = [Int:Int]()
@@ -321,9 +321,9 @@ class Solution {
 //        }
 //    }
     
-//    Given a non-empty array of digits representing a non-negative integer, increment one to the integer.
-//    The digits are stored such that the most significant digit is at the head of the list, and each element in the array contains a single digit.
-//    You may assume the integer does not contain any leading zero, except the number 0 itself.
+    //    Given a non-empty array of digits representing a non-negative integer, increment one to the integer.
+    //    The digits are stored such that the most significant digit is at the head of the list, and each element in the array contains a single digit.
+    //    You may assume the integer does not contain any leading zero, except the number 0 itself.
 
     // [9,9,9]     [9]     [1,4,3,9]
     // [1,0,0,0]   [10]    [1,4,4,0]
@@ -347,12 +347,12 @@ class Solution {
         return digitz
     }
 
-//    Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
-//    (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
-//    Find the minimum element.
+    //    Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+    //    (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]).
+    //    Find the minimum element.
 
-//    Input: [3,4,5,1,2]
-//    Output: 1
+    //    Input: [3,4,5,1,2]
+    //    Output: 1
     
     func findMin(_ nums: [Int]) -> Int {
         var lowestValue = nums[0]
@@ -365,11 +365,32 @@ class Solution {
         return lowestValue
     }
     
+    //  You are given an integer array nums sorted in ascending order, and an integer target.
+    //  Suppose that nums is rotated at some pivot unknown to you beforehand (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+    //  If target is found in the array return its index, otherwise, return -1.
+
+    //  Input: nums = [4,5,6,7,0,1,2], target = 0
+    //  Output: 4
+
+    //  Input: nums = [4,5,6,7,0,1,2], target = 3
+    //  Output: -1
+
+    func search(_ nums: [Int], _ target: Int) -> Int {
+        var resultIndex = -1
+        for (index, num) in nums.enumerated() {
+            if num == target {
+                resultIndex = index
+                return resultIndex
+            }
+        }
+        return resultIndex
+    }
+    
 }
 
 var solution = Solution()
-var arr = [3,4,5,1,2]
-var lowestValue = solution.findMin(arr)
+var arr = [4,5,6,7,0,1,2]
+var lowestValue = solution.search(arr, 3)
 print(lowestValue)
 
 
